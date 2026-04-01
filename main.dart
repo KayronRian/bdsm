@@ -27,7 +27,36 @@ class TelaInicial extends StatelessWidget {
           Text("Ola 5"),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: null),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TelaFormulario()),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class TelaFormulario extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: ListView(
+        children: [
+          Text("nome:"),
+          TextField(),
+          Text("Telefone:"),
+          TextField(),
+          Text("Matricula:"),
+          TextField(),
+          ElevatedButton(onPressed: Navigator.pop, child: Text("Salvar"
+          )),
+        ],
+      ) 
     );
   }
 }
