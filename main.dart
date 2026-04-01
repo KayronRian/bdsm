@@ -53,10 +53,14 @@ class TelaFormulario extends StatelessWidget {
           TextField(),
           Text("Matricula:"),
           TextField(),
-          ElevatedButton(onPressed: Navigator.pop, child: Text("Salvar"
-          )),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Salvar"),
+          ),
         ],
-      ) 
+      ),
     );
   }
 }
