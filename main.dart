@@ -4,9 +4,15 @@ void main() {
   runApp(MaterialApp(home: TelaInicial()));
 }
 
-class TelaInicial extends StatelessWidget {
+class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
 
+  @override
+  State<TelaInicial> createState() => _TelaInicialState();
+}
+
+class _TelaInicialState extends State<TelaInicial> {
+  List<Aluno> alunoList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,17 +21,11 @@ class TelaInicial extends StatelessWidget {
         title: Text("App da 3G"),
         actions: [Text("Aqui tem butão...")],
       ),
-      body: ListView(
-        reverse: true,
-        children: [
-          Text("Ola 5"),
-          Text("Ola 5"),
-          Text("Ola 5"),
-          Text("Ola 5"),
-          Text("Ola 5"),
-          Text("Ola 5"),
-          Text("Ola 5"),
-        ],
+      body: ListView.builder(
+        itemCount: alunoList.length,
+        itemBuilder: (context, index) {
+          return Text(alunoList[index].nome);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -33,6 +33,9 @@ class TelaInicial extends StatelessWidget {
             context,
             MaterialPageRoute(builder: (context) => TelaFormulario()),
           ).then((aluno) {
+            setState(() {
+              alunoList.add(aluno);
+            });
             debugPrint("esse é meu aluno: " + aluno.nome);
           });
         },
