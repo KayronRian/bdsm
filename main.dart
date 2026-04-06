@@ -24,7 +24,13 @@ class _TelaInicialState extends State<TelaInicial> {
       body: ListView.builder(
         itemCount: alunoList.length,
         itemBuilder: (context, index) {
-          return Text(alunoList[index].nome);
+          return ListTile(
+            leading: Icon(Icons.person_4_rounded),
+              title: Text(alunoList[index].nome),
+              subtitle: Text(
+              "Tel.: ${alunoList[index].telefone} | Matrícula: ${alunoList[index].matricula}",
+            ),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
