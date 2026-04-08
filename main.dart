@@ -127,11 +127,38 @@ class TelaDetalhe extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Nome: ${aluno.nome}"),
-            Text("Telefone: ${aluno.telefone}"),
-            Text("Matrícula: ${aluno.matricula}"),
+            // ÍCONE GRANDE CENTRALIZADO
+            Center(child: Icon(Icons.person, size: 100)),
+
+            SizedBox(height: 30),
+
+            // DADOS À ESQUERDA
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Nome: ${aluno.nome}"),
+                  SizedBox(height: 10),
+                  Text("Telefone: ${aluno.telefone}"),
+                  SizedBox(height: 10),
+                  Text("Matrícula: ${aluno.matricula}"),
+                ],
+              ),
+            ),
+
+            Spacer(),
+
+            // BOTÃO DE LIXEIRA CENTRALIZADO
+            Center(
+              child: IconButton(
+                icon: Icon(Icons.delete, size: 40),
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
+              ),
+            ),
           ],
         ),
       ),
