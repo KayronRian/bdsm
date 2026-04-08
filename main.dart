@@ -25,10 +25,28 @@ class _TelaInicialState extends State<TelaInicial> {
         itemCount: alunoList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Icon(Icons.person_4_rounded),
-              title: Text(alunoList[index].nome),
-              subtitle: Text(
+            leading: IconButton(
+              icon: Icon(Icons.person_4_rounded),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaDetalhe(aluno: alunoList[index]),
+                  ),
+                );
+              },
+            ),
+            title: Text(alunoList[index].nome),
+            subtitle: Text(
               "Tel.: ${alunoList[index].telefone} | Matrícula: ${alunoList[index].matricula}",
+            ),
+            trailing: IconButton(
+              onPressed: () {
+                setState(() {
+                  alunoList.removeAt(index);
+                });
+              },
+              icon: Icon(Icons.delete),
             ),
           );
         },
@@ -95,4 +113,28 @@ class Aluno {
   String matricula;
 
   Aluno(this.nome, this.telefone, this.matricula);
+}
+
+class TelaDetalhe extends StatelessWidget {
+  final Aluno aluno;
+
+  const TelaDetalhe({super.key, required this.aluno});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Dados do aluno")),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Nome: ${aluno.nome}"),
+            Text("Telefone: ${aluno.telefone}"),
+            Text("Matrícula: ${aluno.matricula}"),
+          ],
+        ),
+      ),
+    );
+  }
 }
