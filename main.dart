@@ -25,16 +25,8 @@ class _TelaInicialState extends State<TelaInicial> {
         itemCount: alunoList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: IconButton(
-              icon: Icon(Icons.person_4_rounded),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TelaDetalhe(aluno: alunoList[index]),
-                  ),
-                );
-              },
+            leading: Image.network(
+              "https://mir-s3-cdn-cf.behance.net/project_modules/1400/a4beae18425727.562c942511d5e.jpg",
             ),
             title: Text(alunoList[index].nome),
             subtitle: Text(
