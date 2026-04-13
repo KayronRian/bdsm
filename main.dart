@@ -25,9 +25,7 @@ class _TelaInicialState extends State<TelaInicial> {
         itemCount: alunoList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Image.network(
-              "https://mir-s3-cdn-cf.behance.net/project_modules/1400/a4beae18425727.562c942511d5e.jpg",
-            ),
+            leading: Image.asset("images/fuleco.jpg"),
             title: Text(alunoList[index].nome),
             subtitle: Text(
               "Tel.: ${alunoList[index].telefone} | Matrícula: ${alunoList[index].matricula}",
